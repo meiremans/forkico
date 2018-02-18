@@ -1,0 +1,28 @@
+{
+  "DATES": {
+    "START_IN_DAYS": 5,
+    "END_IN_DAYS": 10
+  },
+  "WAVES": {
+    "PRE-ICO": {
+      "BONUS": 200,
+      "CAP": 1
+    },
+    "WAVE1": {
+      "BONUS": 100,
+      "CAP": 2
+    },
+    "WAVE2": {
+      "BONUS": 75,
+      "CAP": 3
+    },
+    "WAVE3": {
+      "BONUS": 50,
+      "CAP": 4
+    },
+    "WAVE4": {
+      "BONUS": 25,
+      "CAP": 5
+    }
+  }
+}
