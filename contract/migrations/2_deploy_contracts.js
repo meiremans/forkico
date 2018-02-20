@@ -3,19 +3,15 @@ const Web3 = require('web3');
 const parseConfig = require('./../test/helpers/parseConfig');
 
 function getWalletsForNetwork(network, accounts) {
-    let wallets = {};
+    let wallets = [];
     if (network === "development") {
-        wallets.owner = accounts[0];
-        wallets.team = accounts[7];
-        wallets.ecosystem = accounts[8];
-        wallets.bounty = accounts[9];
+        wallets[0] = accounts[0];
+        wallets[1] = accounts[7];
+        wallets[2] = accounts[8];
+        wallets[3] = accounts[9];
     }
     if (network === "ropsten") {
-        console.log(accounts);
-        wallets.owner = '0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5';
-        wallets.team = '0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5';
-        wallets.ecosystem = '0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5';
-        wallets.bounty = '0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5';
+        wallets = parseConfig.getWalletAddresses();
 
     }
     return wallets;
@@ -35,7 +31,6 @@ module.exports = function (deployer, network, accounts) {
                 }
 
                 if (block) {
-                    console.log(block);
                     const startTime = block.timestamp + duration.weeks(1); // one second in the future
                     const endTime = startTime + duration.days(2);//TODO: RESET TO: duration.days(178); // half a year
                     const rate = new web3.BigNumber(RATE);
@@ -47,7 +42,8 @@ module.exports = function (deployer, network, accounts) {
                     const wallets = getWalletsForNetwork(network, accounts);
                     console.log(wallets);
 
-                    deployer.deploy(Crowdsale, startTime, endTime, rate, cap, goal,WAVE_CAPS,WAVE_BONUSES, wallets.owner, wallets.team, wallets.ecosystem, wallets.bounty).then(async () => {
+                    deployer.deploy(Crowdsale, startTime, endTime, rate, cap, goal,WAVE_CAPS,WAVE_BONUSES, wallets[0],wallets,parseConfig.getWalletBonusAmount())
+                        .then(async () => {
                         const instance = await Crowdsale.deployed();
                         const token = await instance.token.call();
 
@@ -55,10 +51,10 @@ module.exports = function (deployer, network, accounts) {
                         console.log('-----> startTime:  ', new Date(startTime * 1000).toISOString());
                         console.log('-----> endTime:    ', new Date(endTime * 1000).toISOString());
                         console.log('-----> rate:       ', rate.toString());
-                        console.log('-----> wallet:     ', wallets.owner);
+                        console.log('-----> wallet:     ', wallets);
                         console.log('-----> cap:        ', cap);
                         console.log('-----> waves caps: ', WAVE_CAPS);
-                        console.log('-----> bonusses:   ', WAVE_BONUSES);
+                        console.log('-----> bonuses:    ', WAVE_BONUSES);
                         console.log('-----> goal:       ', goal);
 
                     }).catch(console.error);

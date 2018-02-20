@@ -3,6 +3,8 @@
     "START_IN_DAYS": 5,
     "END_IN_DAYS": 10
   },
+  "RATE" : 100000,
+  "GOAL" : 3,
   "WAVES": {
     "PRE-ICO": {
       "BONUS": 200,
@@ -23,6 +25,24 @@
     "WAVE4": {
       "BONUS": 25,
       "CAP": 5
+    }
+  },
+  "WALLETS":{
+    "OWNER":{
+      "ADDRESS" : "0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5",
+      "AMOUNT" : 20
+    },
+    "TEAM":{
+      "ADDRESS" : "0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5",
+      "AMOUNT" : 20
+    },
+    "ECOSYSTEM" :{
+      "ADDRESS" : "0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5",
+      "AMOUNT" : 20
+    },
+    "BOUNTY" : {
+      "ADDRESS": "0x8d3afe0bd3e0fbf96e6a78103d100c359e0b17e5",
+      "AMOUNT" : 5
     }
   }
 }

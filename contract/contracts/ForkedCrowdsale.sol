@@ -32,6 +32,11 @@ contract ForkedCrowdsale is CappedCrowdsale, RefundableCrowdsale, Pausable {
     uint256[] private WAVE_BONUSES;
     bool isFinalized;
 
+    uint256 tokensForOwnerPercent;
+    uint256 tokensForTeamPercent;
+    uint256 tokensForEcoSystemPercent;
+    uint256 tokensForBountiesPercent;
+
 
     uint256 public totalTokensForSaleDuringPreICO;
 
@@ -52,13 +57,11 @@ contract ForkedCrowdsale is CappedCrowdsale, RefundableCrowdsale, Pausable {
         * @param _cap The cap in WEI(hardcap)
         * @param _goal the goal in WEI(softcap)
         * @param _wallet wallet on which the contract gets created
-        * @param _teamWallet wallet for the team
-        * @param _ecosystemWallet wallet for the ecosystem
-        * @param _bountyWallet wallet for the bountie
 
 
     */
-    function ForkedCrowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, uint256 _cap, uint256 _goal, uint256[] _waveCaps, uint256[] _waveBonuses, address _wallet, address _teamWallet, address _ecosystemWallet, address _bountyWallet) public
+    function ForkedCrowdsale(uint256 _startTime, uint256 _endTime, uint256 _rate, uint256 _cap, uint256 _goal, uint256[] _waveCaps, uint256[] _waveBonuses,
+        address _wallet, address[] _wallets, uint256[] _walletTokensPercentage) public
     CappedCrowdsale(_cap)
     FinalizableCrowdsale()
     RefundableCrowdsale(_goal)
@@ -71,26 +74,30 @@ contract ForkedCrowdsale is CappedCrowdsale, RefundableCrowdsale, Pausable {
         rate = _rate;
         WAVE_CAPS = _waveCaps;
         WAVE_BONUSES = _waveBonuses;
-        teamWallet = _teamWallet;
-        ecosystemWallet = _ecosystemWallet;
-        bountyWallet = _bountyWallet;
+        teamWallet = _wallets[0];
+        tokensForTeamPercent = _walletTokensPercentage[0];
+        tokensForEcoSystemPercent = _walletTokensPercentage[1];
+        tokensForBountiesPercent = _walletTokensPercentage[2];
+        ecosystemWallet = _wallets[1];
+        bountyWallet = _wallets[2];
         totalTokensForSaleDuringPreICO = _waveCaps[0] * _rate;
         setCrowdsaleStage(0);//set in pre ico stage
     }
+
 
     // Crowdsale Stages
     // -----------------------
 
     // Change Crowdsale Stage.
-
     function setCrowdsaleStage(uint256 _stage) private {
-        setCurrentBonus(WAVE_BONUSSES[_stage]);
+        setCurrentBonus(WAVE_BONUSES[_stage]);
         stage = _stage;
     }
 
     function getCurrentStage() public constant returns (uint256){
         return stage;
     }
+
 
     function currentWaveCap() public constant returns (uint256) {
        return WAVE_CAPS[stage];
@@ -176,9 +183,9 @@ contract ForkedCrowdsale is CappedCrowdsale, RefundableCrowdsale, Pausable {
         uint256 tokenSupplyBeforeExtraMinting = token.totalSupply();
         require(!isFinalized);
         require(hasEnded());
-        mintTokens(teamWallet, math.getPercentAmount(tokenSupplyBeforeExtraMinting, 20, 18));
-        mintTokens(bountyWallet, math.getPercentAmount(tokenSupplyBeforeExtraMinting, 5, 18));
-        mintTokens(ecosystemWallet, math.getPercentAmount(tokenSupplyBeforeExtraMinting, 20, 18));
+        mintTokens(teamWallet, math.getPercentAmount(tokenSupplyBeforeExtraMinting, tokensForTeamPercent, 18));
+        mintTokens(bountyWallet, math.getPercentAmount(tokenSupplyBeforeExtraMinting, tokensForBountiesPercent, 18));
+        mintTokens(ecosystemWallet, math.getPercentAmount(tokenSupplyBeforeExtraMinting, tokensForEcoSystemPercent, 18));
         finalization();
         isFinalized = true;
     }
