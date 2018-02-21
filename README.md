@@ -108,6 +108,7 @@ Just place a push request.
 
  - Write MORE Tests
  - Add More configuration options
+ - Implement a flattener to flatten all files and be able to verify them on etherscan
 
 License
 ----

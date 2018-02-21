@@ -1,4 +1,7 @@
-const crowdSaleConfig = require('./../../config/crowdsale');
+var json = require('comment-json');
+var fs = require('fs');
+
+const crowdSaleConfig = json.parse(fs.readFileSync('./../config/crowdsale.json').toString(), null, true);
 
 
 export function getBonuses(){
