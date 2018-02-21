@@ -1,5 +1,8 @@
 # ForkToken
 
+
+![alt text](https://steemitimages.com/0x0/https://steemitimages.com/DQmWmtWJRw66XNhXTHok5JzqdB85VhJkbhwPitHNi9fVFog/image.png)
+
 ForkToken Is an Ethereum token that you can fork(DUH!?). You have to touch 0 Solidity to create a Crowdsale. (No really, coding experience is even not required!)
 
   - 100% config
