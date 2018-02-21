@@ -20,7 +20,7 @@ function getWalletsForNetwork(network, accounts) {
 module.exports = function (deployer, network, accounts) {
 
 
-    const RATE = 100000;
+    const RATE = parseConfig.getRate();
 
     //TODO: when truffleHdwallet finally upgrades to the new web3 provider, rewrite with promises
     web3.eth.getBlockNumber((e, blocknr) => {
