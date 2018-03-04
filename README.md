@@ -106,6 +106,9 @@ Then run fillInConfig(waveData, wallets, meta, cb). See test for an example.
 Want to contribute? Great!
 Just place a push request.
 
+For the unit tests you need to have truffle and ganache installed.
+run $truffle test to test them
+
 
 ### Todos
 
