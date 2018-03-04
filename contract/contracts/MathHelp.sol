@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.19;
 
 contract MathHelp {
     function getPercentAmount(uint amount, uint percentage, uint precision) public
