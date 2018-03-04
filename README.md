@@ -21,7 +21,9 @@ Then after this post to localhost:3000/generateContract
   "DATES": {
     "START_IN_DAYS": 5,
     "END_IN_DAYS": 10
-  }
+  },
+  "RATE" : 100,
+  "GOAL"  : 1000
   },
   "waveData": [{
          "PRE-ICO":
@@ -57,6 +59,8 @@ Then after this post to localhost:3000/generateContract
 }
 ````
 DATES: are the start and end date, relative to now.
+RATE: how much tokens for 1 eth.
+GOAL: the softcap, only when this is reached all waves unlock(except for PRE-ICO which is not refundable)
 Wavedata: for each wave the data, the first wave is always "PRE-ICO", from then on WAVEi (where i is the number of the wave)
 cap = the wave cap
 Bonus = the bonus in percent
