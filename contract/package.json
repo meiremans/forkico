@@ -4,7 +4,8 @@
   "description": "A 100% unit tested smart contract for a crowdsale on the ethereum network",
   "main": "index.js",
   "scripts": {
-    "test": "truffle test"
+    "test": "truffle test",
+      "start": "node ./web/server.js"
   },
   "repository": {
     "type": "git",
