@@ -55,6 +55,8 @@ edit contracts/Token.sol and change "FORKTOKEN" and "FRK" to your name and symbo
  string public symbol = "FRK";
 ```
 
+OR run generateTokenFile
+
 edit contracts/config/crowdsale.json. Here lives your easy to read configuration for the crowdsale:
 ```sh
 {
@@ -96,9 +98,8 @@ BONUS is the added bonus for the wave in percent. so if someone sends you 1 ETH.
 
 CAP is the cap in eth, after this is reached, the wave goes to the next wave. If the wave is the last wave, the crowdsale closes
 
-
-###UI
-There is a small UI in /UI $yarn start fires up this UI and it will generate your crowdsale.json file
+OR run generateCrowdsaleFile. First run generateWaves(AMOUNT_OF_WAVES). 
+Then run fillInConfig(waveData, wallets, meta, cb). See test for an example.
 
 ### Development
 
