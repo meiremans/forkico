@@ -1,7 +1,7 @@
 const jsonfile = require('jsonfile');
 
 
-const file = './crowdsale.json';
+const file = './config/crowdsale.json';
 
 function generateWaves(waves, cb) {
     let wavesObj = {"PRE-ICO": {}};

@@ -19,6 +19,6 @@ function generateTokenFile(name,ticker,decimals,file,cb) {
 
 module.exports = {
     generateTokenFile
-}
+};
 
 
