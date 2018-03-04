@@ -3,10 +3,9 @@
 
 ![alt text](https://steemitimages.com/0x0/https://steemitimages.com/DQmWmtWJRw66XNhXTHok5JzqdB85VhJkbhwPitHNi9fVFog/image.png)
 
-ForkIco Is an Ethereum token that you can fork(thank's c'ptain obvious). You have to touch 0 Solidity to create a Crowdsale. (No really, coding experience is even not required!)
+ForkIco Is an Ethereum token that you can fork. You have to touch 0 Solidity to create a Crowdsale. You can deploy it throug the modex platform(coming soon?)
 
   - 100% config
-  - 100% Unit tested
   - 100% Magical
 
 # Transparancy
@@ -97,6 +96,9 @@ BONUS is the added bonus for the wave in percent. so if someone sends you 1 ETH.
 
 CAP is the cap in eth, after this is reached, the wave goes to the next wave. If the wave is the last wave, the crowdsale closes
 
+
+###UI
+There is a small UI in /UI $yarn start fires up this UI and it will generate your crowdsale.json file
 
 ### Development
 
